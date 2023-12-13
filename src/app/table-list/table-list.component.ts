@@ -14,10 +14,11 @@ export class TableListComponent implements OnInit {
   constructor(private dentalService:DentalserviveService) { }
 
   ngOnInit() {
-    this.dentalService.fetchalllist.subscribe((pats:Patient[])=>{
-      this.patient=pats;
-      
-    });
+    this.dentalService.fetchalllist()
+      .subscribe((pats: Patient[]) => {
+        this.patient = pats;
+      })
+    console.log(this.patient);
   }
 
 

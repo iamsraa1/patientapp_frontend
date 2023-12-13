@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AppConstants } from 'app/util/AppConstants';
 import { Patient } from 'app/util/Patient';
-import { catchError, throwError } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -30,8 +30,8 @@ export class DentalserviveService {
 
     
   }
-  fetchalllist(){
-    return this.http.get<Patient>(AppConstants.ENDPOINT+'/getpat').pipe(catchError(this.handleError));;
-
+  fetchalllist(): Observable<Patient[]>
+  {
+    return this.http.get<Patient[]>(AppConstants.ENDPOINT+'/getpat').pipe(catchError(this.handleError));;
   }
 }
